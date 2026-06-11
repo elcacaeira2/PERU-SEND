@@ -1972,10 +1972,23 @@
       link.addEventListener('click', () => navegarA(link.dataset.page));
     });
 
-    document.getElementById('contactForm').addEventListener('submit', () => {
+    document.getElementById('contactForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const form = event.currentTarget;
       const submitButton = document.getElementById('contactSubmit');
       submitButton.textContent = 'Nos contactaremos con usted en breve';
       submitButton.disabled = true;
+      try {
+        await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        form.reset();
+      } catch (error) {
+        submitButton.textContent = 'No se pudo enviar. Intente nuevamente';
+        submitButton.disabled = false;
+      }
     });
 
     renderCatalog();
