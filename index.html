@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peru Send | Brokers y Traders Internacionales</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rojo: #e30613;
+      --rojo-oscuro: #8f0b20;
+      --azul: #071f4f;
+      --azul-oscuro: #031235;
+      --texto: #172033;
+      --gris: #607086;
+      --linea: #dfe7f2;
+      --fondo: #f4f7fb;
+      --blanco: #ffffff;
+      --dorado: #f2b544;
+      --sombra: 0 20px 48px rgba(11, 27, 64, 0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: white;
+      color: var(--azul-oscuro);
+      font-size: 0.92rem;
+      border-bottom: 1px solid var(--linea);
+    }
+
+    .topbar-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .topbar-logo {
+      width: 170px;
+      height: 60px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .social-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: #f0f4fb;
+      color: var(--azul-oscuro);
+      display: inline-grid;
+      place-items: center;
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-2px);
+      background: var(--rojo);
+      color: white;
+    }
+
+    .social-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      display: block;
+    }
+
+    .showcase-panel {
+      background: white;
+      border-bottom: 1px solid var(--linea);
+      padding: 24px 0;
+    }
+
+    .showcase {
+      width: min(980px, 94vw);
+      margin: 0 auto;
+      aspect-ratio: 16 / 5;
+      max-height: 300px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #ffffff, #f7faff);
+      border: 1px solid var(--linea);
+      box-shadow: var(--sombra);
+    }
+
+    .showcase-track {
+      display: flex;
+      width: 500%;
+      height: 100%;
+      animation: slideRight 34s infinite ease-in-out;
+    }
+
+    .showcase-slide {
+      width: 20%;
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, rgba(0, 56, 168, 0.08), rgba(200, 16, 46, 0.08)),
+        #ffffff;
+    }
+
+    .showcase-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 24px;
+    }
+
+    .showcase-slide.photo img {
+      object-fit: cover;
+      padding: 0;
+    }
+
+    @keyframes slideRight {
+      0%, 14% { transform: translateX(0); }
+      20%, 34% { transform: translateX(-20%); }
+      40%, 54% { transform: translateX(-40%); }
+      60%, 74% { transform: translateX(-60%); }
+      80%, 94% { transform: translateX(-80%); }
+      100% { transform: translateX(0); }
+    }
+
+    .image-note {
+      color: var(--gris);
+      text-align: center;
+      margin-top: 14px;
+      font-size: 0.92rem;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--rojo);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 10px 24px rgba(143, 11, 32, 0.22);
+    }
+
+    .nav-inner {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      list-style: none;
+      overflow-x: auto;
+      padding: 8px 0;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      color: white;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: var(--azul-oscuro);
+      color: white;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; animation: fade 0.25s ease; }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      color: white;
+      background: var(--azul);
+      padding: clamp(58px, 8vw, 96px) 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: none;
+      color: #ffe4a7;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 6.6vw, 6.25rem);
+      line-height: 1.02;
+      max-width: 980px;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      font-size: clamp(1.42rem, 2.6vw, 1.9rem);
+      max-width: 980px;
+      color: rgba(255, 255, 255, 0.88);
+      margin: 24px 0 32px;
+    }
+
+    .hero-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(230px, 1fr));
+      gap: 12px;
+      max-width: 640px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 17px 28px;
+      font-weight: 900;
+      font-size: 1.08rem;
+      min-height: 58px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.16);
+    }
+
+    .btn-primary { background: var(--dorado); color: #251606; }
+    .btn-blue { background: var(--azul); color: white; }
+    .btn-white { background: white; color: var(--azul-oscuro); }
+    .btn-red { background: var(--rojo); color: white; }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 22px;
+      padding: 24px;
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card strong {
+      display: block;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: #ffe4a7;
+      margin-bottom: 16px;
+    }
+
+    .hero-card span { color: rgba(255, 255, 255, 0.82); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .flag {
+      display: block;
+      width: 58px;
+      height: 38px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin: 0 auto 8px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    }
+
+    .inline-flag {
+      width: 34px;
+      height: 22px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: inline-block;
+      vertical-align: -4px;
+      margin: 0 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    .section-pad { padding: 54px 0; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 24px;
+    }
+
+    .section-kicker {
+      color: var(--rojo);
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      color: var(--azul-oscuro);
+      font-size: clamp(1.9rem, 3.4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      color: var(--gris);
+      max-width: 840px;
+      font-size: 1.06rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(11, 27, 64, 0.07);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #edf3ff;
+      color: var(--azul);
+      display: grid;
+      place-items: center;
+      font-size: 1.15rem;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .card h3 { color: var(--azul-oscuro); margin-bottom: 8px; font-size: 1.2rem; }
+    .card p { color: var(--gris); }
+
+    .about-panel {
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+    }
+
+    .about-top {
+      background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+      color: white;
+      padding: 28px;
+    }
+
+    .about-top h2 { color: white; font-size: 2rem; margin-bottom: 12px; }
+    .about-top p { color: rgba(255, 255, 255, 0.9); max-width: 920px; }
+    .about-body { padding: 28px; }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .check-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--gris);
+    }
+
+    .check-list b { color: var(--texto); }
+    .check { color: var(--rojo); font-weight: 900; }
+
+    .catalog-toolbar {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 12px;
+      align-items: center;
+      margin: 24px 0;
+    }
+
+    .input, .select, .textarea {
+      width: 100%;
+      border: 1px solid var(--linea);
+      border-radius: 14px;
+      background: white;
+      color: var(--texto);
+      padding: 12px 14px;
+      outline: none;
+    }
+
+    .input:focus, .select:focus, .textarea:focus {
+      border-color: var(--azul);
+      box-shadow: 0 0 0 4px rgba(0, 56, 168, 0.1);
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .catalog-card {
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(11, 27, 64, 0.08);
+      cursor: pointer;
+      min-height: 100%;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .catalog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(11, 27, 64, 0.14);
+    }
+
+    .catalog-card-media {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, #dfe7f2, #ffffff);
+      overflow: hidden;
+    }
+
+    .catalog-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #edf3ff;
+      display: block;
+    }
+
+    .catalog-card-title {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      min-height: 42px;
+      background: linear-gradient(180deg, rgba(3, 18, 53, 0.1), rgba(3, 18, 53, 0.82));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px 7px;
+      font-size: 0.78rem;
+      line-height: 1.15;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+    }
+
+    .catalog-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      background: rgba(3, 18, 53, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+    }
+
+    .catalog-modal.active { display: flex; }
+
+    .catalog-dialog {
+      width: min(760px, 100%);
+      max-height: min(82vh, 780px);
+      background: white;
+      border-radius: 22px;
+      box-shadow: var(--sombra);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .catalog-dialog-head {
+      background: var(--azul-oscuro);
+      color: white;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .catalog-dialog-head h3 {
+      font-size: 1.35rem;
+      line-height: 1.15;
+    }
+
+    .catalog-close {
+      border: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: var(--rojo);
+      color: white;
+      font-size: 1.4rem;
+      line-height: 1;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .catalog-dialog-body {
+      padding: 22px;
+      overflow: auto;
+      color: var(--texto);
+    }
+
+    .catalog-contact {
+      display: inline-flex;
+      background: #25d366;
+      color: #062617;
+      border-radius: 999px;
+      padding: 9px 15px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .catalog-contact:hover {
+      background: #1fb45a;
+      color: white;
+    }
+
+    .catalog-list {
+      columns: 2;
+      column-gap: 32px;
+      list-style: none;
+    }
+
+    .catalog-list li {
+      break-inside: avoid;
+      margin: 0 0 9px;
+      color: var(--gris);
+    }
+
+    .catalog-item-btn {
+      width: 100%;
+      border: 1px solid var(--linea);
+      border-radius: 12px;
+      background: #f8fbff;
+      color: var(--azul-oscuro);
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .catalog-item-btn:hover {
+      background: var(--rojo);
+      color: white;
+      border-color: var(--rojo);
+    }
+
+    .catalog-list .subheading {
+      color: var(--azul-oscuro);
+      font-weight: 900;
+      margin-top: 14px;
+    }
+
+    .catalog-list .note {
+      color: var(--texto);
+      font-style: italic;
+      margin: 10px 0;
+    }
+
+    .supplier-panel {
+      margin-top: 38px;
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: 24px;
+      box-shadow: var(--sombra);
+      overflow: hidden;
+    }
+
+    .supplier-head {
+      background: var(--azul-oscuro);
+      color: white;
+      padding: 24px;
+    }
+
+    .supplier-head h3 {
+      font-size: 1.7rem;
+      margin-bottom: 6px;
+    }
+
+    .supplier-head p {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .supplier-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 860px;
+      background: white;
+    }
+
+    .supplier-table th,
+    .supplier-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--linea);
+      vertical-align: top;
+    }
+
+    .supplier-table th {
+      background: #f4f7fb;
+      color: var(--azul-oscuro);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .supplier-table tbody tr:hover {
+      background: #fbfdff;
+    }
+
+    .region-cell {
+      color: var(--azul-oscuro);
+      font-weight: 900;
+    }
+
+    .factory-count {
+      color: var(--rojo);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .supplier-total td {
+      background: var(--azul);
+      color: white;
+      font-weight: 900;
+      border-bottom: 0;
+    }
+
+    .store-band {
+      background: linear-gradient(135deg, var(--rojo), var(--rojo-oscuro));
+      color: white;
+      border-radius: 24px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--sombra);
+    }
+
+    .store-band h2 { color: white; }
+    .store-band p { color: rgba(255, 255, 255, 0.9); }
+
+    .machine-section {
+      margin-top: 28px;
+    }
+
+    .machine-section h3 {
+      color: var(--azul-oscuro);
+      font-size: 1.65rem;
+      margin-bottom: 14px;
+      padding-left: 14px;
+      border-left: 6px solid var(--rojo);
+    }
+
+    .machine-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .machine-card {
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 14px 30px rgba(11, 27, 64, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .machine-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: #edf3ff;
+      display: block;
+    }
+
+    .machine-media-pair {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 0;
+      background: #edf3ff;
+    }
+
+    .machine-media-pair img {
+      height: 230px;
+    }
+
+    .machine-media-pair .machine-data-img {
+      object-fit: contain;
+      background: #071f4f;
+      padding: 6px;
+    }
+
+    .machine-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .machine-body h4 {
+      color: var(--azul-oscuro);
+      font-size: 1.18rem;
+    }
+
+    .machine-price {
+      color: var(--rojo);
+      font-size: 1.3rem;
+      font-weight: 900;
+    }
+
+    .machine-specs {
+      list-style: none;
+      color: var(--gris);
+      display: grid;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .machine-specs li::before {
+      content: "•";
+      color: var(--rojo);
+      font-weight: 900;
+      margin-right: 7px;
+    }
+
+    .parts-card img {
+      height: 180px;
+    }
+
+    .contact-card {
+      background: white;
+      border: 1px solid var(--linea);
+      border-radius: 24px;
+      box-shadow: var(--sombra);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+
+    .contact-info {
+      background: var(--azul-oscuro);
+      color: white;
+      padding: 28px;
+    }
+
+    .contact-info p {
+      color: rgba(255, 255, 255, 0.86);
+      margin-bottom: 12px;
+    }
+
+    .contact-form { padding: 28px; }
+
+    .logistics-hero {
+      background:
+        linear-gradient(120deg, rgba(3, 18, 53, 0.9), rgba(7, 31, 79, 0.78)),
+        url("imagenes/logistica-contenedores.jpg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      border-radius: 24px;
+      padding: 44px;
+      box-shadow: var(--sombra);
+      margin-bottom: 24px;
+    }
+
+    .logistics-hero h2 { color: white; }
+    .logistics-hero p { color: rgba(255, 255, 255, 0.9); max-width: 980px; margin-top: 14px; }
+
+    .service-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .service-list li {
+      background: white;
+      border: 1px solid var(--linea);
+      border-left: 5px solid var(--rojo);
+      border-radius: 14px;
+      padding: 14px 16px;
+      color: var(--gris);
+      box-shadow: 0 10px 24px rgba(11, 27, 64, 0.06);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .service-icon {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 12px;
+      background: #edf3ff;
+      color: var(--azul);
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .map-frame {
+      width: 100%;
+      min-height: 360px;
+      border: 0;
+      display: block;
+      margin-top: 24px;
+      border-radius: 20px;
+      box-shadow: var(--sombra);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-grid .full { grid-column: 1 / -1; }
+
+    .footer {
+      background: var(--azul-oscuro);
+      color: rgba(255, 255, 255, 0.82);
+      padding: 30px 0;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: clamp(16px, 3vw, 28px);
+      bottom: clamp(18px, 4vw, 32px);
+      z-index: 140;
+      width: 66px;
+      height: 66px;
+      border-radius: 999px;
+      background: #25d366;
+      color: white;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 16px 34px rgba(37, 211, 102, 0.42);
+      animation: whatsappPulse 2.4s infinite;
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+
+    .floating-whatsapp:hover {
+      background: #1fb45a;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 20px 42px rgba(37, 211, 102, 0.5);
+    }
+
+    .floating-whatsapp svg {
+      width: 34px;
+      height: 34px;
+      fill: currentColor;
+      display: block;
+    }
+
+    .floating-whatsapp::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border: 2px solid rgba(37, 211, 102, 0.55);
+      border-radius: inherit;
+      animation: whatsappRing 2.4s infinite;
+    }
+
+    .contact-whatsapp {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #25d366;
+      color: #062617;
+      font-weight: 900;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+    }
+
+    .whatsapp-btn:hover {
+      background: #1fb45a;
+      color: white;
+    }
+
+    @keyframes whatsappPulse {
+      0%, 100% { transform: scale(1); }
+      12% { transform: scale(1.08); }
+      24% { transform: scale(1); }
+      36% { transform: scale(1.08); }
+      48% { transform: scale(1); }
+    }
+
+    @keyframes whatsappRing {
+      0% { opacity: 0.75; transform: scale(0.9); }
+      70%, 100% { opacity: 0; transform: scale(1.35); }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .grid-3, .grid-2, .contact-card { grid-template-columns: 1fr; }
+      .service-list { grid-template-columns: 1fr; }
+      .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .machine-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .catalog-toolbar { grid-template-columns: 1fr; }
+      .store-band { grid-template-columns: 1fr; }
+      .catalog-list { columns: 1; }
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner, .nav-inner { align-items: flex-start; }
+      .topbar-inner { justify-content: center; text-align: center; padding: 10px 0; }
+      .nav-inner { justify-content: center; padding: 10px 0; }
+      .stats, .form-grid { grid-template-columns: 1fr; }
+      .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .machine-grid { grid-template-columns: 1fr; }
+      .machine-media-pair { grid-template-columns: 1fr; }
+      .hero-actions { grid-template-columns: 1fr; max-width: none; }
+      .form-grid .full { grid-column: auto; }
+      .showcase { border-radius: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <img class="topbar-logo" src="imagenes/logo-peru-send.png" alt="Logo Peru Send">
+      <div class="social">
+        <a class="social-icon" href="https://www.facebook.com/juan.elvira.94695/about_details" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5V6.75c0-.62.42-.75.72-.75H16.5V3h-2.45C11.33 3 10.7 5.05 10.7 6.36V8.5H9v3h1.7V21H14v-9.5h2.23l.35-3H14z"/></svg>
+        </a>
+        <a class="social-icon" href="https://www.instagram.com/peru.send1/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 3h8.4A4.8 4.8 0 0 1 21 7.8v8.4a4.8 4.8 0 0 1-4.8 4.8H7.8A4.8 4.8 0 0 1 3 16.2V7.8A4.8 4.8 0 0 1 7.8 3zm0 2A2.8 2.8 0 0 0 5 7.8v8.4A2.8 2.8 0 0 0 7.8 19h8.4a2.8 2.8 0 0 0 2.8-2.8V7.8A2.8 2.8 0 0 0 16.2 5H7.8zm4.2 3.3A3.7 3.7 0 1 1 8.3 12 3.7 3.7 0 0 1 12 8.3zm0 2A1.7 1.7 0 1 0 13.7 12 1.7 1.7 0 0 0 12 10.3zM16.7 7.1a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z"/></svg>
+        </a>
+        <a class="social-icon" href="https://www.tiktok.com/@perusend" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.3 3c.35 2.35 1.7 3.75 3.9 3.9v3.05a7.02 7.02 0 0 1-3.85-1.17v5.68c0 3.1-2.1 5.54-5.15 5.54A5.1 5.1 0 0 1 5 14.85c0-3.18 2.55-5.4 5.75-5.1v3.18c-1.42-.45-2.65.45-2.65 1.88a2.02 2.02 0 0 0 2.02 2.05c1.28 0 2.05-.9 2.05-2.4V3h3.13z"/></svg>
+        </a>
+        <a class="social-icon" href="https://www.youtube.com/@PeruSend" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a3 3 0 0 0-2.1-2.12C17.65 4.6 12 4.6 12 4.6s-5.65 0-7.5.48A3 3 0 0 0 2.4 7.2 31.25 31.25 0 0 0 2 12a31.25 31.25 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.12c1.85.48 7.5.48 7.5.48s5.65 0 7.5-.48a3 3 0 0 0 2.1-2.12A31.25 31.25 0 0 0 22 12a31.25 31.25 0 0 0-.4-4.8zM10 15.4V8.6l5.8 3.4L10 15.4z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <ul class="nav-links">
+        <li><a class="nav-link active" data-page="inicio">Inicio</a></li>
+        <li><a class="nav-link" data-page="nosotros">Nosotros</a></li>
+        <li><a class="nav-link" data-page="catalogo">Catálogo</a></li>
+        <li><a class="nav-link" data-page="logistica">Logística</a></li>
+        <li><a class="nav-link" data-page="tienda">Maquinaria Pesada y Repuestos</a></li>
+        <li><a class="nav-link" data-page="contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page active" id="page-inicio">
+      <header class="showcase-panel" id="inicio">
+        <div class="container">
+          <div class="showcase" aria-label="Presentacion de Peru Send">
+            <div class="showcase-track">
+              <div class="showcase-slide photo">
+                <img src="imagenes/banner-1.jpg" alt="Repuestos embalados para importacion">
+              </div>
+              <div class="showcase-slide photo">
+                <img src="imagenes/banner-2.jpg" alt="Camiones listos para transporte internacional">
+              </div>
+              <div class="showcase-slide photo">
+                <img src="imagenes/banner-3.jpg" alt="Productos embalados para importacion">
+              </div>
+              <div class="showcase-slide photo">
+                <img src="imagenes/banner-4.jpg" alt="Insumos industriales embalados">
+              </div>
+              <div class="showcase-slide photo">
+                <img src="imagenes/banner-5.jpg" alt="Excavadora para importacion">
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="hero">
+        <div class="container hero-grid">
+          <div>
+            <h1>Traders y Brokers para compras internacionales</h1>
+            <p>Asesoría comercial para compras internacionales en China, USA y Europa, desarrollo de productos, negociación con proveedores, gestión aduanera y nacionalización de mercancías en Perú.</p>
+            <div class="hero-actions">
+            <button class="btn btn-primary" onclick="navegarA('contacto')">Solicitar cotización</button>
+            <button class="btn btn-white" onclick="navegarA('catalogo')">Ver catálogo</button>
+            </div>
+          </div>
+          <aside class="hero-card">
+            <strong>Regiones comerciales conectadas</strong>
+            <div class="stats">
+              <div class="stat"><img class="flag" src="imagenes/bandera-peru.png" alt="Bandera de Perú"><b>Perú</b></div>
+              <div class="stat"><img class="flag" src="imagenes/bandera-europa.png" alt="Bandera de Europa"><b>Europa</b></div>
+              <div class="stat"><img class="flag" src="imagenes/bandera-usa.png" alt="Bandera de Estados Unidos"><b>EE.UU.</b></div>
+              <div class="stat"><img class="flag" src="imagenes/bandera-china.png" alt="Bandera de China"><b>China</b></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <div class="container section-pad">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Qué hacemos</div>
+            <h2>Te acompañamos en tus compras internacionales</h2>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <article class="card"><div class="card-icon">01</div><h3>Proyección de costos</h3><p>Evaluamos el modo más eficiente de importar tus productos y presentamos presupuestos con datos claros.</p></article>
+          <article class="card"><div class="card-icon">02</div><h3>Negociación con proveedores</h3><p>Verificamos la existencia de los proveedores, negociamos las condiciones de compra de manera eficiente, coordinamos los plazos de entrega, solicitamos las fichas técnicas, certificados de origen y otros documentos inherentes a la importación, además de coordinar los despachos y embarques de productos.</p></article>
+          <article class="card"><div class="card-icon">03</div><h3>Seguimiento integral</h3><p>Te brindamos informes del estado de tus productos desde la fabricación hasta la entrega del producto en tu almacén.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-nosotros">
+      <div class="container section-pad">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Nosotros</div>
+            <h2>Más que asesores comerciales de compras internacionales</h2>
+          </div>
+        </div>
+
+        <div class="about-panel">
+          <div class="about-top">
+            <h2>Peru Send y Tianguis International Trading Co. Ltd</h2>
+            <p>Somos mucho más que asesores comerciales en compras internacionales; somos un equipo de profesionales dispuesto a asesorarte y acompañarte en cada decisión relacionada con la gestión de operaciones de importación y exportación de productos, desarrollo de productos, operaciones logísticas, asesoría legal aduanera y nacionalización de mercancías en Perú, China, Estados Unidos y Europa.</p>
+          </div>
+          <div class="about-body">
+            <div>
+              <p class="lead">Brindamos asesoría técnica en oportunidades de negocio a nuestros asociados. También preparamos proyecciones de costos para evaluar el modo más eficiente de importar tus productos.</p>
+              <br>
+              <ul class="check-list">
+                <li><span class="check">✓</span><span><b>Presupuestos libres de costo</b> con fotos, características detalladas y precios por unidad.</span></li>
+                <li><span class="check">✓</span><span><b>Precios referenciales</b> sujetos a cotización final y con validez comercial limitada.</span></li>
+                <li><span class="check">✓</span><span><b>Asesoría legal aduanera.</b></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-catalogo">
+      <div class="container section-pad">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Catálogo</div>
+            <h2>Rubros de productos internacionales</h2>
+          </div>
+        </div>
+
+        <div class="catalog-grid" id="catalogGrid"></div>
+
+        <section class="supplier-panel">
+          <div class="supplier-head">
+            <h3>Tabla de proveedores de Peru Send</h3>
+            <p>Red referencial de fábricas por zona de China y principales productos fabricados.</p>
+          </div>
+          <div class="table-wrap">
+            <table class="supplier-table">
+              <thead>
+                <tr>
+                  <th>N°</th>
+                  <th>Área</th>
+                  <th>Provincia</th>
+                  <th>Principales productos fabricados</th>
+                  <th>Número de fábricas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td class="region-cell">Nor Este de China</td>
+                  <td>Liaoning</td>
+                  <td>Trajes de baño, textiles, velas, artículos de vacaciones, etc.</td>
+                  <td class="factory-count">51</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td class="region-cell">Norte de China</td>
+                  <td>Hebei</td>
+                  <td>Equipaje, globos, accesorios para bicicletas, artículos de uso diario, etc.</td>
+                  <td class="factory-count">110</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td class="region-cell" rowspan="3">Centro de China</td>
+                  <td>Henan</td>
+                  <td>Equipos para lluvia, herramientas de medición, etc.</td>
+                  <td class="factory-count">44</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Hubei</td>
+                  <td>Lana, acero, cortinas de baño, tiza, cochecitos de bebé, etc.</td>
+                  <td class="factory-count">31</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Hunan</td>
+                  <td>Cerámica, herramientas, etc.</td>
+                  <td class="factory-count">89</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td class="region-cell" rowspan="7">Este de China</td>
+                  <td>Shandong</td>
+                  <td>Productos de cerámica, productos de vidrio, artesanías de madera, etc.</td>
+                  <td class="factory-count">209</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Jiangsu</td>
+                  <td>Textiles, peluches, productos de vidrio, etc.</td>
+                  <td class="factory-count">321</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Anhui</td>
+                  <td>Productos de vidrio, controles remotos, etc.</td>
+                  <td class="factory-count">72</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Zhejiang</td>
+                  <td>Productos de plástico, artículos de uso diario, sombrillas, etc.</td>
+                  <td class="factory-count">8,689</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Jiangxi</td>
+                  <td>Instrumentos, productos electrónicos, juguetes, etc.</td>
+                  <td class="factory-count">67</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Fujian</td>
+                  <td>Calzado, artesanía, sombrillas, etc.</td>
+                  <td class="factory-count">208</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Guangdong</td>
+                  <td>Juguetes, herramientas, lámparas, etc.</td>
+                  <td class="factory-count">1,126</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td class="region-cell">Sur de China</td>
+                  <td>Guangxi</td>
+                  <td>Productos de bambú y madera, percheros, etc.</td>
+                  <td class="factory-count">32</td>
+                </tr>
+                <tr class="supplier-total">
+                  <td colspan="4">Total de fábricas</td>
+                  <td>11,049</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <div class="catalog-modal" id="catalogModal" aria-hidden="true">
+      <div class="catalog-dialog" role="dialog" aria-modal="true" aria-labelledby="catalogModalTitle">
+        <div class="catalog-dialog-head">
+          <h3 id="catalogModalTitle">Catálogo</h3>
+          <button class="catalog-close" type="button" id="catalogClose" aria-label="Cerrar">×</button>
+        </div>
+        <div class="catalog-dialog-body" id="catalogModalBody"></div>
+      </div>
+    </div>
+
+    <section class="page" id="page-logistica">
+      <div class="container section-pad">
+        <div class="logistics-hero">
+          <div>
+            <div class="section-kicker" style="color:#ffe4a7;">Logística</div>
+            <h2>Soluciones logísticas nacionales e internacionales</h2>
+          </div>
+          <p>Brindamos cotizaciones de flete de transporte y distribución tanto a nivel nacional como internacional, ya sea vía terrestre, marítima o aérea. Nuestras prestaciones se distinguen por su gran adaptabilidad a los constantes cambios que caracterizan los negocios actuales.</p>
+        </div>
+
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Servicios de transporte</div>
+            <h2>Coordinamos cargas, documentos y operaciones en destino</h2>
+          </div>
+        </div>
+
+        <ul class="service-list">
+          <li><span class="service-icon">🚢</span><span>Transporte marítimo en contenedores y carga convencional.</span></li>
+          <li><span class="service-icon">✈️</span><span>Transporte aéreo.</span></li>
+          <li><span class="service-icon">🚚</span><span>Transporte terrestre a nivel nacional e internacional.</span></li>
+          <li><span class="service-icon">⚠️</span><span>Transporte especializado de líquidos, explosivos, vehículos y embarcaciones.</span></li>
+          <li><span class="service-icon">📦</span><span>Consolidación de cargas.</span></li>
+          <li><span class="service-icon">🔄</span><span>Operaciones de transporte multimodales y combinadas.</span></li>
+          <li><span class="service-icon">📍</span><span>Seguimiento de mercancías.</span></li>
+          <li><span class="service-icon">🏬</span><span>Soluciones de almacenaje, distribución, despacho de aduanas y seguro de mercancías.</span></li>
+          <li><span class="service-icon">⚡</span><span>Envíos courier o exprés de muestras.</span></li>
+          <li><span class="service-icon">📅</span><span>Desarrollo de agendas comerciales para visitas a fábricas y ferias en países de destino, acompañado por personal local.</span></li>
+          <li><span class="service-icon">🤝</span><span>Asesoría para comprar en China, evaluando precio, calidad y negociación con fabricantes chinos.</span></li>
+          <li><span class="service-icon">🌐</span><span>Traducción de documentos comerciales del chino al español y del inglés al español.</span></li>
+          <li><span class="service-icon">🧾</span><span>Solución de problemas aduaneros en China para la salida de productos.</span></li>
+          <li><span class="service-icon">🔎</span><span>Verificación del estado de la mercadería en fábrica, almacén o puerto.</span></li>
+          <li><span class="service-icon">🏭</span><span>Verificación de posibles proveedores chinos.</span></li>
+          <li><span class="service-icon">💬</span><span>Coordinación directa con proveedores cuando la comunicación se dificulta por el idioma.</span></li>
+          <li><span class="service-icon">🛃</span><span>Servicio de desaduanaje y nacionalización en destino, recomendando la mejor forma de declaración para evitar contratiempos y sobrecostos.</span></li>
+          <li><span class="service-icon">🚛</span><span>Costo de transporte del almacén a su local comercial o almacén.</span></li>
+          <li><span class="service-icon">🦺</span><span>Costo de cuadrilla, si lo requiere, y resguardo de su contenedor.</span></li>
+          <li><span class="service-icon">✅</span><span>Trámite de permisos ante agentes reguladores: DIGEMID, DIGESA, MINAGRI, MINEM, MININTER, MTC, entre otros.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="page" id="page-tienda">
+      <div class="container section-pad">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Maquinaria Pesada y Repuestos</div>
+            <h2>Maquinaria Pesada y Repuestos</h2>
+          </div>
+        </div>
+
+        <section class="machine-section">
+          <h3>Maquinaria de segunda mano para venta local</h3>
+          <div class="machine-grid">
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-local-cat-329d2l.jpg" alt="Excavadora Caterpillar 329D2L en venta local">
+              <div class="machine-body">
+                <h4>Excavadora sobre orugas 2018 CATERPILLAR 329D2L</h4>
+                <div class="machine-price">$ 95,000 + IGV</div>
+                <ul class="machine-specs">
+                  <li>Potencia: 209 HP</li>
+                  <li>Horas: 460</li>
+                  <li>Cucharon: 1.54 m³</li>
+                  <li>Ubicación: Lima</li>
+                  <li>Inspeccionada, verificada y con entrega segura</li>
+                  <li>Operativa, overhauleada y lista para trabajar</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Excavadora sobre orugas CATERPILLAR 329D2L (2018) - venta local')">Cotizar</button>
+              </div>
+            </article>
+
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-local-bobcat-s570.jpg" alt="Minicargador Bobcat S570 en venta local">
+              <div class="machine-body">
+                <h4>Minicargador 2013 BOBCAT S570</h4>
+                <div class="machine-price">$ 25,000 + IGV</div>
+                <ul class="machine-specs">
+                  <li>Potencia: 61 HP</li>
+                  <li>Horas: 3,800</li>
+                  <li>Cucharon: 0.93 m³</li>
+                  <li>Ubicación: Lima</li>
+                  <li>Inspeccionada, verificada y con entrega segura</li>
+                  <li>Operativa y lista para trabajar</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Minicargador 2013 BOBCAT S570 - venta local')">Cotizar</button>
+              </div>
+            </article>
+
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-local-volvo-l90g.jpg" alt="Cargador frontal Volvo L90G en venta local">
+              <div class="machine-body">
+                <h4>Cargador frontal 2012 VOLVO L90G</h4>
+                <div class="machine-price">$ 74,000 + IGV</div>
+                <ul class="machine-specs">
+                  <li>Potencia: 173 HP</li>
+                  <li>Horas: 9,968</li>
+                  <li>Cucharon: 2.5 m³</li>
+                  <li>Ubicación: Huancayo</li>
+                  <li>Inspeccionada, verificada y con entrega segura</li>
+                  <li>Operativa y lista para trabajar</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Cargador frontal 2012 VOLVO L90G - venta local')">Cotizar</button>
+              </div>
+            </article>
+
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-local-john-deere-350-glc.jpg" alt="Excavadora John Deere 350 GLC en venta local">
+              <div class="machine-body">
+                <h4>Excavadora 2016 JOHN DEERE 350 GLC</h4>
+                <div class="machine-price">$ 65,000 + IGV</div>
+                <ul class="machine-specs">
+                  <li>Potencia: 271 HP</li>
+                  <li>Horas: 9,363</li>
+                  <li>Cucharon: 2.3 m³</li>
+                  <li>Ubicación: Ayacucho</li>
+                  <li>Inspeccionada, verificada y con entrega segura</li>
+                  <li>Operativa y lista para trabajar</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Excavadora 2016 JOHN DEERE 350 GLC - venta local')">Cotizar</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="machine-section">
+          <h3>Maquinaria de segunda mano para importación desde EE.UU.</h3>
+          <div class="machine-grid">
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-importacion-cat-246d.jpg" alt="Minicargador Caterpillar 246D">
+              <div class="machine-body">
+                <h4>Minicargador 2016 CATERPILLAR 246D</h4>
+                <div class="machine-price">$ 40,000 + IGV</div>
+                <ul class="machine-specs">
+                  <li>Potencia: 74.3 HP</li>
+                  <li>Horas: 3,398</li>
+                  <li>Cucharon: ancho 1.68 m</li>
+                  <li>Ubicación: New Jersey, Estados Unidos</li>
+                  <li>Inspeccionada, verificada y con entrega segura</li>
+                  <li>Operativa y lista para importar</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Minicargador CATERPILLAR 246D - importación desde EE.UU.')">Consultar importación</button>
+              </div>
+            </article>
+
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-importacion-cat-420f-it.jpg" alt="Retroexcavadora CAT 420F IT">
+              <div class="machine-body">
+                <h4>Retroexcavadora 2012 CAT 420F IT</h4>
+                <div class="machine-price">$ 64,974 + IGV</div>
+                <ul class="machine-specs">
+                  <li>Potencia: 94 HP</li>
+                  <li>Horas: 5,525</li>
+                  <li>Cucharon: 0.96 m³</li>
+                  <li>Ubicación: EE.UU., Newark</li>
+                  <li>Inspeccionada, verificada y con entrega segura</li>
+                  <li>Operativa, electromecánica, con brazo extensible y lista para importar</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Retroexcavadora CAT 420F IT - importación desde EE.UU.')">Consultar importación</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="machine-section">
+          <h3>Maquinaria nueva para importación desde China</h3>
+          <div class="machine-grid">
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-importacion-hengwang-hwqy12t.jpg" alt="Camión grúa Hengwang HWQY12T">
+              <div class="machine-body">
+                <h4>Camión grúa 2026 HENGWANG HWQY12T</h4>
+                <div class="machine-price">Precio aprox. en Perú: $ 58,000.00</div>
+                <ul class="machine-specs">
+                  <li>Ubicación: China</li>
+                  <li>Modelo: HENGWANG HWQY12T</li>
+                  <li>Año de fabricación: 2026</li>
+                  <li>Capacidad de carga: 12,000 kg</li>
+                  <li>Motor: Cummins 140 HP</li>
+                  <li>Caja de cambios: 6 velocidades</li>
+                  <li>Diésel de 6 cilindros, refrigerado por agua, turbo de 4 tiempos</li>
+                  <li>Capacidad máxima: 31,000 kg</li>
+                  <li>Extensión longitudinal de la pluma: 32 m</li>
+                  <li>Pies de apoyo: 4 piezas, frenos de aire y ruedas 825-20</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Camión grúa HENGWANG HWQY12T - importación desde China')">Consultar importación</button>
+              </div>
+            </article>
+
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-importacion-hengwang-hw60.jpg" alt="Excavadora Hengwang HW-60">
+              <div class="machine-body">
+                <h4>Excavadora 2026 HENGWANG HW-60</h4>
+                <div class="machine-price">Precio aprox. en Perú: $ 31,621.00</div>
+                <ul class="machine-specs">
+                  <li>Fabricación: China</li>
+                  <li>Año de fabricación: 2026</li>
+                  <li>Motor: Yanmar 4TNV94L-BVXG</li>
+                  <li>Potencia del motor: 36.2 kW</li>
+                  <li>Capacidad de cucharón: 0.23 m³</li>
+                  <li>Cabina: cerrada</li>
+                  <li>Condición: nueva</li>
+                  <li>Garantía total</li>
+                  <li>Ideal para trabajos de construcción</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Excavadora HENGWANG HW-60 - importación desde China')">Consultar importación</button>
+              </div>
+            </article>
+
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-importacion-ltmg-lwe210.jpg" alt="Excavadora a ruedas LTMG LWE210">
+              <div class="machine-body">
+                <h4>Excavadora a ruedas 2026 LTMG LWE210</h4>
+                <div class="machine-price">Precio aprox. en Perú: $ 149,600.00</div>
+                <ul class="machine-specs">
+                  <li>Fabricación: China</li>
+                  <li>Peso: 21 toneladas</li>
+                  <li>Motor: Cummins 6BTAA5.9</li>
+                  <li>Año de fabricación: 2026</li>
+                  <li>Condición: nueva</li>
+                  <li>Garantía total</li>
+                  <li>Ideal para trabajos de construcción</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Excavadora a ruedas LTMG LWE210 - importación desde China')">Consultar importación</button>
+              </div>
+            </article>
+
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-importacion-ltmg-lwe150.jpg" alt="Excavadora a ruedas LTMG LWE150">
+              <div class="machine-body">
+                <h4>Excavadora a ruedas 2026 LTMG LWE150</h4>
+                <div class="machine-price">Precio aprox. en Perú: $ 76,960.00</div>
+                <ul class="machine-specs">
+                  <li>Fabricación: China</li>
+                  <li>Motor: Yuchai</li>
+                  <li>Peso: 15 toneladas</li>
+                  <li>Año de fabricación: 2026</li>
+                  <li>Condición: nueva</li>
+                  <li>Garantía total</li>
+                  <li>Ideal para trabajos de construcción</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Excavadora a ruedas LTMG LWE150 - importación desde China')">Consultar importación</button>
+              </div>
+            </article>
+
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-importacion-hengwang-hw30-25.jpg" alt="Retroexcavadora Hengwang HW30-25">
+              <div class="machine-body">
+                <h4>Retroexcavadora 2026 HENGWANG HW30-25</h4>
+                <div class="machine-price">Precio aprox. en Perú: $ 55,680.00</div>
+                <ul class="machine-specs">
+                  <li>Ubicación: China</li>
+                  <li>Año de fabricación: 2026</li>
+                  <li>Motor: Cummins EPA4</li>
+                  <li>Capacidad del cucharón: 1.3 m³</li>
+                  <li>Capacidad de elevación: 2,500 kg</li>
+                  <li>Brazo extensible opcional</li>
+                  <li>Presión del sistema hidráulico: 22 MPa</li>
+                  <li>Tracción: 4x4</li>
+                  <li>Línea hidráulica para martillo opcional</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Retroexcavadora HENGWANG HW30-25 - importación desde China')">Consultar importación</button>
+              </div>
+            </article>
+
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-importacion-hengwang-hw40-28.jpg" alt="Retroexcavadora Hengwang HW40-28">
+              <div class="machine-body">
+                <h4>Retroexcavadora 2026 HENGWANG HW40-28</h4>
+                <div class="machine-price">Precio aprox. en Perú: $ 57,960.00</div>
+                <ul class="machine-specs">
+                  <li>Ubicación: China</li>
+                  <li>Año de fabricación: 2026</li>
+                  <li>Motor: Yuchai YCD4J22T-115</li>
+                  <li>Capacidad del cargador: 1.5 m³</li>
+                  <li>Capacidad de elevación: 2,800 kg</li>
+                  <li>Brazo extensible opcional</li>
+                  <li>Presión del sistema hidráulico: 22 MPa</li>
+                  <li>Tracción: 4x4</li>
+                  <li>Línea hidráulica para martillo opcional</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Retroexcavadora HENGWANG HW40-28 - importación desde China')">Consultar importación</button>
+              </div>
+            </article>
+
+            <article class="machine-card">
+              <img src="imagenes/maquinaria-importacion-chenglong-6x4.jpg" alt="Camión volquete Chenglong 6x4">
+              <div class="machine-body">
+                <h4>Camión volquete 2026 CHENGLONG 6x4 con retardador</h4>
+                <div class="machine-price">Precio aprox. en Perú: $ 89,586.00</div>
+                <ul class="machine-specs">
+                  <li>Ubicación: China</li>
+                  <li>Modelo: LZ3351H7DB</li>
+                  <li>Año de fabricación: 2026</li>
+                  <li>Configuración: 6x4</li>
+                  <li>Carga útil máxima: 40,000 kg</li>
+                  <li>Motor: Yuchai YC6K1248-50, 2250 N·m</li>
+                  <li>Nivel de emisión: Euro V</li>
+                  <li>Diésel de 6 cilindros</li>
+                  <li>Caja de cambios: 12 marchas adelante + retardador</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Camión volquete CHENGLONG 6x4 - importación desde China')">Consultar importación</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="machine-section">
+          <h3>Repuestos</h3>
+          <div class="machine-grid">
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-01.jpg" alt="Mando final para excavadora Volvo">
+              <div class="machine-body">
+                <h4>Mando final para excavadora</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Código y configuración según equipo</li>
+                  <li>Producto nuevo y garantizado</li>
+                  <li>Alta resistencia, rendimiento y durabilidad comprobada</li>
+                  <li>Listo para instalación directa</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Mando final para excavadora')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-02.jpg" alt="Tren de rodaje con orugas de acero">
+              <div class="machine-body">
+                <h4>Tren de rodaje con orugas de acero o caucho SJ600B-1</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Capacidad de carga: 5 a 6 toneladas</li>
+                  <li>Dimensiones: 2500 x 1600 x 570 mm</li>
+                  <li>Velocidad: 1.5 a 2 km/h</li>
+                  <li>Par de salida: 4270 / 8220 Nm</li>
+                  <li>Peso bruto: 3400 kg</li>
+                  <li>Incluye rodillos, rueda guía, sprocket EATON, rueda dentada, orugas y motor hidráulico Eaton de dos velocidades</li>
+                  <li>Fabricado en China</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Tren de rodaje SJ600B-1')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-03.jpg" alt="Cadenas, zapatas y rodillos para excavadoras">
+              <div class="machine-body">
+                <h4>Cadenas, zapatas y rodillos para excavadoras</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Compatibles con Caterpillar, Komatsu, John Deere, Case, Volvo, Hyundai, Doosan, Dynapac, Sullair, Atlas Copco, Cummins, Ingersoll Rand, Terex y Kobelco</li>
+                  <li>Zapatas disponibles: 600 mm, 700 mm y 800 mm</li>
+                  <li>Cadena de oruga: 35MnB</li>
+                  <li>Zapata de oruga: 25MnB</li>
+                  <li>Pernos y tuercas: 40Cr</li>
+                  <li>Stock permanente y opción de importación urgente con reserva del 50%</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Cadenas, zapatas y rodillos para excavadoras')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-04.jpg" alt="Cadena de caucho para mini excavadoras">
+              <div class="machine-body">
+                <h4>Cadena de caucho para mini excavadoras</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Compatible con CAT, JCB, Bobcat, Case, John Deere, Wacker Neuson y otras marcas</li>
+                  <li>Alta resistencia al desgaste y al deslizamiento</li>
+                  <li>Mayor agarre y estabilidad en terrenos húmedos o irregulares</li>
+                  <li>Disponible para distintos modelos de mini excavadoras</li>
+                  <li>Stock permanente e importación urgente con separación del 50%</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Cadena de caucho para mini excavadoras')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-05.jpg" alt="Rueda guía para excavadora">
+              <div class="machine-body">
+                <h4>Rueda guía para excavadora</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Código y configuración según equipo</li>
+                  <li>Producto nuevo y garantizado</li>
+                  <li>Alta resistencia, rendimiento y durabilidad comprobada</li>
+                  <li>Listo para instalación directa</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Rueda guía para excavadora')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-06.jpg" alt="Válvula de alivio para maquinaria pesada">
+              <div class="machine-body">
+                <h4>Válvula de alivio motor de giro VOE724211580</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Producto nuevo y garantizado</li>
+                  <li>Alta resistencia, rendimiento y durabilidad comprobada</li>
+                  <li>Listo para instalación directa en el equipo</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Válvula de alivio para maquinaria pesada')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-07.jpg" alt="Bombas hidráulicas y componentes">
+              <div class="machine-body">
+                <h4>Bombas hidráulicas y componentes para excavadoras</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Bombas hidráulicas, componentes, válvulas y rodamientos</li>
+                  <li>Mandos finales y de traslación</li>
+                  <li>Empaquetaduras y sellos</li>
+                  <li>Boom, brazo, balde, giro, dirección y más</li>
+                  <li>Repuestos importados de USA, Corea y Europa</li>
+                  <li>Garantía referencial: 2500 h/u</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Bombas hidráulicas y componentes para excavadoras')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-08.jpg" alt="Puntas y cuchillas para maquinaria pesada">
+              <div class="machine-body">
+                <h4>Puntas y cuchillas</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Dientes y ripper</li>
+                  <li>Cuchillas y segmentos</li>
+                  <li>Protecciones antidesgaste</li>
+                  <li>Pernos, pasadores y tornillería</li>
+                  <li>Garantía referencial: 2500 h/u</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Puntas y cuchillas')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-12.jpg" alt="Cucharones para maquinaria pesada">
+              <div class="machine-body">
+                <h4>Cucharones</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Cucharones para excavadora, retroexcavadora y minicargador</li>
+                  <li>Protecciones antidesgaste</li>
+                  <li>Pernos, pasadores y tornillería</li>
+                  <li>Garantía referencial: 2500 h/u</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Cucharones')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-09.jpg" alt="Kit de sellos para cilindro hidráulico">
+              <div class="machine-body">
+                <h4>Kit de sellos para cilindro hidráulico</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Aplicación: cilindros hidráulicos de pluma, brazo, balde y otros sistemas</li>
+                  <li>Opciones compatibles y originales según disponibilidad</li>
+                  <li>Garantía referencial: 2500 h/u</li>
+                  <li>Producto nuevo, garantizado y listo para instalación</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Kit de sellos para cilindro hidráulico')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-10.jpg" alt="Motores hidráulicos">
+              <div class="machine-body">
+                <h4>Motores hidráulicos</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Motor hidráulico de giro</li>
+                  <li>Motor hidrostático</li>
+                  <li>Producto nuevo y garantizado</li>
+                  <li>Opciones compatibles y originales según disponibilidad</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Motores hidráulicos')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-13.jpg" alt="Banco de válvulas">
+              <div class="machine-body">
+                <h4>Banco de válvulas</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Banco o control de válvulas</li>
+                  <li>Center joint para maquinaria pesada</li>
+                  <li>Producto nuevo y garantizado</li>
+                  <li>Opciones compatibles y originales según disponibilidad</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Banco de válvulas')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+            <article class="machine-card parts-card">
+              <img src="imagenes/repuesto-11.jpg" alt="Rodillos para excavadoras">
+              <div class="machine-body">
+                <h4>Rodillos para excavadoras</h4>
+                <div class="machine-price">Requiere cotización</div>
+                <ul class="machine-specs">
+                  <li>Disponible para cualquier marca y modelo según evaluación técnica</li>
+                  <li>Rodillos de oruga para excavadoras y equipos de construcción</li>
+                  <li>Compatibles con Hyundai, CTP, CAT, Cummins, JCB, John Deere, Doosan, Hitachi y Komatsu</li>
+                  <li>Producto nuevo y garantizado</li>
+                  <li>Envíos seguros a todo el Perú vía Shalom y Marvisur</li>
+                </ul>
+                <button class="btn btn-blue" onclick="quoteMachine('Rodillos para excavadoras')">Cotizar repuesto</button>
+              </div>
+            </article>
+
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="page" id="page-contacto">
+      <div class="container section-pad">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Contacto</div>
+            <h2>Solicita una cotización o información comercial</h2>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-info">
+            <h3 style="font-size:1.5rem; margin-bottom:16px;">Información de contacto</h3>
+            <p><b>Dirección:</b> Calle Puquina 100, Torre 5 Dpto. 605, Res. Los Prados de San Miguel, Lima - Perú</p>
+            <p><b>Teléfono:</b> (511) 228-2628</p>
+            <p><b>Email:</b> perusend2020@hotmail.com</p>
+            <p><b>Web:</b> www.perusend.com</p>
+            <p><b>Horario:</b> Lunes a Viernes, 9:00 a.m. - 6:00 p.m.</p>
+            <div class="contact-whatsapp">
+              <a class="whatsapp-btn" href="https://wa.me/51993346812" target="_blank" rel="noopener">WhatsApp +51 993 346 812</a>
+              <a class="whatsapp-btn" href="https://wa.me/51932242440" target="_blank" rel="noopener">WhatsApp +51 932 242 440</a>
+            </div>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <div class="form-grid">
+              <input class="input" id="nombre" required placeholder="Nombre / Empresa *">
+              <input class="input" id="ruc" placeholder="RUC">
+              <input class="input" id="telefono" placeholder="Celular">
+              <input class="input" id="email" type="email" required placeholder="Email *">
+              <input class="input full" id="sku" placeholder="SKU o producto de interés">
+              <textarea class="textarea full" id="comentario" rows="5" placeholder="Comentario, producto, cantidad o país de origen"></textarea>
+              <button class="btn btn-blue full" type="submit">Enviar por correo</button>
+            </div>
+          </form>
+        </div>
+        <iframe
+          class="map-frame"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Calle%20Puquina%20100%2C%20San%20Miguel%2C%20Lima%2C%20Peru&output=embed"
+          title="Ubicación de Peru Send en Google Maps"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>Peru Send</strong><br>
+      Brokers y Traders Internacionales | Importación, búsqueda de proveedores y productos, logística y asesoría comercial
+    </div>
+  </footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/51993346812" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.85c0 1.74.46 3.43 1.34 4.92L2 22l5.38-1.4a9.95 9.95 0 0 0 4.66 1.16h.01A9.9 9.9 0 0 0 22 11.91 9.92 9.92 0 0 0 12.04 2zm.01 18.08h-.01a8.25 8.25 0 0 1-4.2-1.15l-.3-.18-3.19.83.86-3.1-.2-.32a8.13 8.13 0 0 1-1.25-4.31 8.26 8.26 0 1 1 8.29 8.23zm4.53-6.17c-.25-.13-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.79.96-.14.17-.29.19-.54.07-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.38-1.73-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.61c.13.17 1.78 2.72 4.31 3.81.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+  </a>
+
+  <script>
+    const catalogGrid = document.getElementById('catalogGrid');
+    const catalogModal = document.getElementById('catalogModal');
+    const catalogModalTitle = document.getElementById('catalogModalTitle');
+    const catalogModalBody = document.getElementById('catalogModalBody');
+    const catalogClose = document.getElementById('catalogClose');
+
+    const catalogCategories = [
+      { title: 'ACERO', image: 'imagenes/catalogo-01.jpg', items: ['Acero Inoxidable','Acero Silicoso','Aceros Comerciales: láminas, planchas, tuberías','Aceros Especiales','Aceros Galvanizados','Alambre','Barras','Bolas para molienda','Cadenas','Candados','Cañerías','Clavos','Cuerdas','Estructuras según planos','Grapas'] },
+      { title: 'ALIMENTOS', image: 'imagenes/catalogo-02.jpg', items: ['Alimentos en General','Ají en salsa','Ajo fresco','Arroz instantáneo','Caramelos','Chicles','Chips papas fritas','Fruta deshidratada','Fruta enlatadas','Galletas','Harina de papa','Kanikama','Mariscos congelados','Pasta de tomates','Pescados enlatados','Sopas y fideos instantáneos','Vegetales congelados','Verduras deshidratadas','Verduras enlatadas','Alimentos para mascotas','Alimento húmedo para gatos'] },
+      { title: 'ARTÍCULOS BIODEGRADABLES', image: 'imagenes/catalogo-03.jpg', items: ['Bandejas','Bolsas','Cubiertos','Platos','Vasos'] },
+      { title: 'ARTÍCULOS DE ASEO', image: 'imagenes/catalogo-04.jpg', items: ['Baldes','Escobas','Escobillones','Esponjas','Estrujadores','Escobilla para ropa','Escobilla para loza','Traperos','Virutillas finas'] },
+      { title: 'ARTÍCULOS DE LIBRERÍA', image: 'imagenes/catalogo-05.jpg', items: ['Agendas','Artículos de oficina, escritorio, colegio','Cartón corrugado','Cartón forrado','Cartón piedra','Cartulinas','Cintas de embalaje','Cuadernos','Dispensadores para papel','Mecanismos para archivadores','Papel crac lainers','Papeles en general','Papeles embalajes','Papeles entretenidos','Papeles metalizados','Láminas de PVC','Libretas','Paleta artículos de escritorio (corcheteras, perforadoras, lápices, porta clips, etc.)','note:Nota: Toda la papelería en materiales vírgenes y reciclados.'] },
+      { title: 'ARTÍCULOS DE SEGURIDAD INDUSTRIAL', image: 'imagenes/catalogo-06.jpg', items: ['Audífonos / tampones','Chaleco reflectante','Cintas reflectantes','Mascarillas'] },
+      { title: 'ARTÍCULOS DE USO DIARIO PERSONAL', image: 'imagenes/catalogo-07.jpg', items: ['Bálsamo','Cepillos dentales','Cotonitos','Detergentes','Enjuagues bucales','Envases (ir a envases)','Espuma de afeitar','Jabones desinfectantes en gel','Máquinas de afeitar desechables','Pañales','Papel higiénico','Papel tissue','Polímeros','Preservativos','Shampoo','Toallas húmedas','sub:Cosmética','Cremas','Envases para barnices uñas','Envases para lápices labiales','Envases (ver envases)','Esmaltes uñas','Labiales','Lápices','Polvos','Pomos trilaminados (envases para dentífrico, desodorantes, etc.)','Set de promociones','Tinturas','Tinturas para cabellos','Toallas desmaquilladoras','Toallas higiénicas'] },
+      { title: 'ARTÍCULOS PARA EMBALAJE', image: 'imagenes/catalogo-08.jpg', items: ['Bobinas de papel para embalaje','Bolsas de PVC','Dispensadores de papel','Film de diferentes plásticos','Film stretch','Foil aluminio','Foil para sachets farmacéuticos','Hojalata para uso industrial y alimentos','Papel laminado y enchapado','Pomos trilaminados (pasta de dientes, desodorantes, etc.)','PVC tarpaulin','Sacos y bolsas de polipropileno','Zunchos de plástico y acero'] },
+      { title: 'AUTOPARTES', image: 'imagenes/catalogo-09.jpg', items: ['Accesorios: fundas, aspiradoras, hidrolavadoras, cables, etc.','Balatas','Baterías de arranque y para transporte','Bombas','Discos de freno','Ejes','Filtros de agua y aceite','Focos accesorios','Llantas','Neumáticos','Pastillas de freno'] },
+      { title: 'CALZADO', image: 'imagenes/catalogo-10.jpg', items: ['Calzado deportivo, casual y de vestir Hombre mujer y niño'] },
+      { title: 'CONSTRUCCIÓN', image: 'imagenes/catalogo-11.jpg', items: ['sub:Herramientas','Abrasivos: dientes de sierra, discos pulidores','Equipos y materias primas para soldar','Escaleras completas, escaleras telescópicas','Herramientas de aire comprimido','Máquinas pulidoras','Martillos eléctricos','Taladros','sub:Indumentaria','Botas','Cascos','Delantales para soldar','Guantes','Lentes para soldar','Overoles','Trajes de agua','sub:Obra gruesa','Aceros','Aglomerados','Andamios','Cemento','Cielos falsos metálicos y yeso','Construcciones pre-fabricadas','Encofrados plásticos','Fierros','Filtros asfálticos','Flange','Grúas','Láminas de aluminio (alucobond)','Mallas electrosoldadas','Membranas impermeabilizantes','Paneles para cielos de PVC','Perfiles de aluminio','Planchas y paneles de yeso','Techos de aluminio','Techos de fibra mineral','Techos de PVC','Terciados','Ventanas de vidrio','Volcanita RF','sub:Quincallería','Accesorios para ventanas','Burlete','Bisagras','Cerrajería para vidrios','sub:Terminaciones','Alfombras','Bisagras','Cabinas de duchas con y sin grifería','Cables eléctricos','Calderas de agua','Calefón','Cerámica de Alto tráfico (brillante y opaca)','Cerámica de muro y con micro cristales','Cerámica marmolizados','Cerámica pulida, rústica y soluble a la sal','Cortinas rolleras','Cortinas roman de telas','Fibra de vidrio','Flexibles de acero inoxidable para agua y gas','Flexibles para duchas','Pisos flotantes','Formalita','Granito','Grifería completa para baños, duchas, cocina, en variados modelos y tamaños','Látex para respaldo de alfombras','Linóleos','Manillas','Mármol','Paneles de ducha con grifería','Papeles murales','Partes y piezas para escaleras','Partes y piezas para sanitarios','Pasto sintético','Perfiles de PVC','Perfiles para escaleras','Persianas aluminio y madera','Pernos','Pisos de bambú','Pisos elevados','Pisos homogéneos PVC','Pisos laminados','Pisos PVC','Porcelanatos','Puertas','Puertas pegables de PVC','Quincallería','Radiadores','Recubrimientos y pinturas poliméricos','Revestimiento mural de PVC','Ruedas para muebles','Tinas acrílicas','Tinas de acero esmaltadas','Topes de puerta','Tuercas','Válvulas de agua para el uso doméstico','Vanitorios','Ventanas de PVC','Volcanita RF','Wc'] },
+      { title: 'DECORACIÓN', image: 'imagenes/catalogo-12.jpg', items: ['Alfombras muro a muro','Artículos de goma Eva','Cortinas rolleras','Cubrecamas','Muebles (mesas, sillones, sillas, etc.)','Plumones','Tapices','Telas'] },
+      { title: 'ENVASES', image: 'imagenes/catalogo-13.jpg', items: ['Artículos de embalaje (ver artículos de embalaje)','Blister para medicamentos','Ciclos promocionales','sub:Plásticos y de vidrio para industria','Alimenticia','Cosmética','Farmacéutica','Pomos trilaminados','Válvulas'] },
+      { title: 'EQUIPAMIENTO LOGÍSTICO', image: 'imagenes/catalogo-14.jpg', items: ['Elevadores de cola para camiones','Plataformas elevadoras para muelles de descarga','Puertas enrollables para bodegas'] },
+      { title: 'FERRETERÍA', image: 'imagenes/catalogo-15.jpg', items: ['Envases (ver envases)','Fittings (cobre, bronce, acero)','Flexibles','Grifería','Sifones de agua','Válvulas en general','Válvulas para estanque'] },
+      { title: 'HOGAR', image: 'imagenes/catalogo-16.jpg', items: ['Accesorios para Baño','Accesorios para Cocina','Artículos de aseo (ver)','Electrodomésticos','Electrónica','Menaje','Piscina y jardín','sub:Electrodomésticos','Cafeteras','Estufas','Planchas','Sandwicheras','Teteras eléctricas','sub:Accesorios para baños','Barras para toallas','Basureros','Botiquines','Cortinas de baño','Espejos','Dispensadores jabón de manos y papel higiénico','Porta jabón','Porta papel higiénico','Tapas de WC (plásticas y MDF)','Tapetes de baño','Vaso para agua y sets completos','sub:Menaje','Bandejas','Baterías de cocina','Cristalería','Cuchillería','Termos','Vajilla','sub:Accesorios comedor, living y dormitorio','Cortinas rolleras','Futones','Tapices','Telas de decoración','Sábanas','Alfombras','sub:Piscina y jardín','Accesorios para jardín','Bombas y filtros de agua','Cortadores de pasto','Escaleras','Luces para piscinas','Mangueras','Orilladoras','Toldos','sub:Decoración','Alfombras muro a muro','Artículos de goma Eva','Cortinas rolleras','Cubrecamas','Muebles (mesas, sillones, sillas, etc.)','Plumones','Tapices','Telas'] },
+      { title: 'INDUSTRIA PESQUERA', image: 'imagenes/catalogo-17.jpg', items: ['Cuerdas y sogas','Pinturas marinas'] },
+      { title: 'MÁQUINAS Y PRODUCTOS INDUSTRIALES', image: 'imagenes/catalogo-18.jpg', items: ['Bombas periféricas y sumergibles','Calderas de agua','Calefactores solares','Calefón','Cocinas industriales','Compresores de aire','Generadores','Hornos','Implementación completa para cocinas de casinos y hoteles','Máquinas para la industria panadera','Paneles solares y soportes','Refrigeradores industriales','Termos eléctricos'] },
+      { title: 'MEDICINA', image: 'imagenes/catalogo-19.jpg', items: ['sub:Insumos Médicos','Blistec para medicamentos','Gasas','Gorras','Guantes de examen','Guantes estériles','Guantes quirúrgicos','Jeringas','Llaves de 3 pasos','Llaves de paso','Mascarillas','Parche analgésico','Polainas','Ropa desechable','Set de infusión','sub:Medicamentos','Analgésicos','Antibióticos','Anticancerígenos','Antiestamínicos','Antiinflamatorios','Antipiréticos','Hormonas','Vitaminas'] },
+      { title: 'METALES, MINERALES Y SUS MANUFACTURAS', image: 'imagenes/catalogo-20.jpg', items: ['Aluminio','Cobalto','Níquel','Zinc'] },
+      { title: 'MINERÍA', image: 'imagenes/catalogo-21.jpg', items: ['Carpas modulares','Cintas trasportadoras','Empaquetaduras','Estaciones de polines','Guarderas'] },
+      { title: 'MOBILIARIO', image: 'imagenes/catalogo-22.jpg', items: ['sub:Para Casa','Muebles','Futones','sub:Para Supermercados','Canastos','Carros','Estanterías','Góndolas','Puertas Magnéticas acceso','Ruedas para carros','sub:Para oficinas','Carpas modulares','Cortinas (ver cortinas)','Escritorios','Estaciones de trabajo','Mesas reunión','Módulos (container houses)','Sillas gerencias','Sillas reunión','sub:Accesorios para el hogar','Alfombras','Cortinas rolleras','Futones','Tapices','Telas de decoración'] },
+      { title: 'PLÁSTICOS', image: 'imagenes/catalogo-23.jpg', items: ['Cuerdas','Envases (ver envases)','Flotadores (boyas)','Láminas de plástico','Materia prima para fabricar plástico:(pp, ps, PVC)','Sacos plásticos','Maxisacos de 1000 a 1500 kl','Regulares de 50 kg y más','Productos plásticos','PVC baner para anuncios publicitarios'] },
+      { title: 'PRODUCTOS DE CAUCHO Y LÁTEX', image: 'imagenes/catalogo-24.jpg', items: ['Correas transportadoras','Mangueras'] },
+      { title: 'PRODUCTOS DE MADERA', image: 'imagenes/catalogo-25.jpg', items: ['Terciados','Cholguán'] },
+      { title: 'PRODUCTOS ELÉCTRICOS', image: 'imagenes/catalogo-26.jpg', items: ['Aisladores','Accesorios','Antenas','Cables','Conductores y cables eléctricos','Conduits','Iluminación','Interruptores','Seccionadores','Telefonía','Transformadores','Termos','Torres y monopostes'] },
+      { title: 'PRODUCTOS PARA CICLOS PROMOCIONALES', image: 'imagenes/catalogo-27.jpg', items: ['Envases (ver envases)','Llaveros PVC y plásticos','PVC tarpaulin','Sets de productos en general'] },
+      { title: 'PRODUCTOS TÉCNICOS DE INGENIERÍA', image: 'imagenes/catalogo-28.jpg', items: ['Equipos de automatización industrial','Equipos de medición','Instrumentación'] },
+      { title: 'QUÍMICOS', image: 'imagenes/catalogo-29.jpg', items: ['Ácidos: arsénico, crómico, cítrico, fumárico, fólico, sórbico, ascórbico','Agroquímicos: fertilizantes','HPMC: hidroxipropilmetil celulosa','Metales y minerales: aluminios y zinc','Productos veterinarios: florfenicol, OTC (oxitetraciclina), tiamulina, producto terminado','Químicos farmacéuticos: antibióticos, genéricos y medicina genética','Químicos industriales: óxido de magnesio en distintos grados.','Químicos para la industria alimentaria: aspartame, acesulfame K, sucralosa, ácido cítrico, ciclamato monosódico, ácido sulfame, carboximetil, celulosa, maltodextrina, dextrosa, proteína de soya y tripolifosfato de sodio','Sulfate de cobalto'] },
+      { title: 'SISTEMAS DE TRATAMIENTO DE AGUA POTABLE Y SERVIDAS', image: 'imagenes/catalogo-30.jpg', items: ['Equipos','Plantas de tratamiento','Repuestos y filtros'] },
+      { title: 'SOLUCIONES TECNOLÓGICAS', image: 'imagenes/catalogo-31.jpg', items: ['sub:Comunicación - Redes','Wire Less','Wire Less (con Repetidor de Señal)','WiFi','Modems','Routers','Switches','Set top boxes','Teléfonos (análogos, IP, USB)','Teléfonos Móviles','sub:Almacenamiento y Reproducción','MP3, MP4, MP5','Dispositivos de almacenamiento masivo USB','sub:Accesorios Computacionales','Audífonos','Parlantes','Teclados','Mouses','Cables','Seguridad','sub:Accesorios para Automóviles','GPS','Manos libres','sub:Cables y Cargadores','HDMI','USB','sub:Electrónica','Cámaras fotográficas','Cámaras de video','sub:Computadores','Pantallas/Monitores','Tabletas PC','sub:Terminales Autoservicio','Cajeros automáticos','Kioscos','sub:Soluciones Educación','Entrega Contenido a distancia','Establecimientos Educacionales, Salones Clases Multimedia, Redes entre distintas unidades o áreas','sub:Soluciones Publicidad y Comunicación','Paredes videográficas, pantallas publicidad, señalización digital, poster digital, monitor interactivo, LCD touch screen'] },
+      { title: 'TEXTIL', image: 'imagenes/catalogo-32.jpg', items: ['Accesorios de confección','Confecciones: Infantil, Mujer, Hombre','Fibras','Hilados','Telas o tejidos','Textiles del hogar','sub:Accesorios de confección','Agujas','Alfileres','Botones y broches','Cierres','Cintas','Cintas para cortinas','Cordones','Elásticos','Encajes','Ganchos para cortinas','Ganchos para ropa','Hebillas','Hilo de coser','Marroquinería','Pasamanería','Tijeras','sub:Fibras','Algodón','Lana','Nylon','Poliéster','Viscosa','sub:Hilados','Hilados de algodón cardado','Hilados de algodón peinado','Hilado de viscosa','Hilados retorcidos','sub:Telas o tejidos','Plano','Punto o circular','Textiles para confección','Tricotosas','sub:Textiles del hogar','Alfombras','Cortinas','Manteles','Sábanas','Toallas'] },
+      { title: 'VEHÍCULOS', image: 'imagenes/catalogo-33.jpg', items: ['Betoneras','Bicicletas y rodados','Camiones y buses','Motos','Trailers','Grúas'] },
+      { title: 'VIDRIO', image: 'imagenes/catalogo-34.jpg', items: ['Alimentos','Cosmética','Envases (ver envases)','Farmacéuticos','Gaseosas','Licores y vinos','Vidrio farmacéutico'] },
+      { title: 'VETERINARIA', image: 'imagenes/catalogo-35.jpg', items: ['sub:Materias primas','Ácido oxolínico','Colistin sulfate','Cloruro de colina','Emamectin','Enrofloxacina','Florfenicol','Niacine (vit b3)','Norfloxacina','OTC BASE','OTCHCL','Tiamulina','Tylosin','Vitaminas','Xylazine HCL','sub:Productos terminados','Diclofenaco de sodio','Estradiol benzoate','HCL','Kanamycin','Long action oxitetraciclina','Lyncomicin','Nandrolone','Oxitocina','Progesterone','Sulfato','Testosterone propionate','Testosterone undecanoato','Arena en gel'] },
+      { title: 'VESTUARIO', image: 'imagenes/catalogo-36.jpg', items: ['sub:Infantil','Pijamas','Ropa interior','Ropa (punto, plano)','Trajes de baño','Uniformes escolares','sub:Mujer','Blazer','Blusa','Calzado sport y de vestir','Faldas','Lencería','Pantalones','Panties','Ropa deportiva casual y de vestir (punto, plano)','Ropa interior','Sostenes, cuadros, camisetas, bodies y fajas (punto, plano y encaje)','Tejido de punto','Uniformes corporativos (punto, plano)','sub:Hombre','Abrigos','Calcetines','Pantalones','Pijamas','Ropa deportiva, casual y de vestir (punto, plano)','Ropa interior (boxer, camiseta, etc)','Tejido de punto','Trajes de baño','Uniformes corporativos (punto, plano)'] }
+    ];
+
+    function renderCatalog() {
+      catalogGrid.innerHTML = catalogCategories.map((category, index) => `
+        <article class="catalog-card" onclick="openCatalog(${index})" tabindex="0" role="button" aria-label="Ver ${category.title}">
+          <div class="catalog-card-media">
+            <img src="${category.image}" alt="${category.title}" loading="lazy">
+            <div class="catalog-card-title">${category.title}</div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function openCatalog(index) {
+      const category = catalogCategories[index];
+      catalogModalTitle.textContent = category.title;
+      const list = category.items.map((item, itemIndex) => {
+        if (item.startsWith('sub:')) return `<li class="subheading">${item.slice(4)}</li>`;
+        if (item.startsWith('note:')) return `<li class="note">${item.slice(5)}</li>`;
+        return `<li><button class="catalog-item-btn" type="button" onclick="selectCatalogItem(${index}, ${itemIndex})">${item}</button></li>`;
+      }).join('');
+      catalogModalBody.innerHTML = `<a class="catalog-contact" href="#" onclick="navegarA('contacto'); closeCatalog(); return false;">Contáctenos</a><ul class="catalog-list">${list}</ul>`;
+      catalogModal.classList.add('active');
+      catalogModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function selectCatalogItem(categoryIndex, itemIndex) {
+      const category = catalogCategories[categoryIndex];
+      const item = category.items[itemIndex];
+      closeCatalog();
+      navegarA('contacto');
+      document.getElementById('sku').value = category.title + ' - ' + item;
+      document.getElementById('comentario').focus();
+    }
+
+    function quoteMachine(item) {
+      navegarA('contacto');
+      document.getElementById('sku').value = item;
+      document.getElementById('comentario').focus();
+    }
+
+    function closeCatalog() {
+      catalogModal.classList.remove('active');
+      catalogModal.setAttribute('aria-hidden', 'true');
+    }
+
+    catalogClose.addEventListener('click', closeCatalog);
+    catalogModal.addEventListener('click', event => {
+      if (event.target === catalogModal) closeCatalog();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeCatalog();
+    });
+
+    function navegarA(page) {
+      document.querySelectorAll('.page').forEach(section => section.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      const target = document.getElementById('page-' + page);
+      if (target) target.classList.add('active');
+      const link = document.querySelector(`[data-page="${page}"]`);
+      if (link) link.classList.add('active');
+      window.scrollTo({ top: page === 'inicio' ? 0 : document.querySelector('.nav').offsetTop, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => navegarA(link.dataset.page));
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const ruc = document.getElementById('ruc').value;
+      const telefono = document.getElementById('telefono').value;
+      const email = document.getElementById('email').value;
+      const sku = document.getElementById('sku').value;
+      const comentario = document.getElementById('comentario').value;
+      const subject = encodeURIComponent('Solicitud de cotización - Peru Send');
+      const body = encodeURIComponent(`Nombre / Empresa: ${nombre}\nRUC: ${ruc}\nCelular: ${telefono}\nEmail: ${email}\nProducto: ${sku}\n\nComentario:\n${comentario}`);
+      window.location.href = `mailto:perusend2020@hotmail.com?subject=${subject}&body=${body}`;
+    });
+
+    renderCatalog();
+  </script>
+</body>
+</html>
