@@ -1824,14 +1824,17 @@
               <a class="whatsapp-btn" href="https://wa.me/51932242440" target="_blank" rel="noopener">WhatsApp +51 932 242 440</a>
             </div>
           </div>
-          <form class="contact-form" id="contactForm">
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/perusend2020@gmail.com" method="POST">
             <div class="form-grid">
-              <input class="input" id="nombre" required placeholder="Nombre / Empresa *">
-              <input class="input" id="ruc" placeholder="RUC">
-              <input class="input" id="telefono" placeholder="Celular">
-              <input class="input" id="email" type="email" required placeholder="Email *">
-              <input class="input full" id="sku" placeholder="SKU o producto de interés">
-              <textarea class="textarea full" id="comentario" rows="5" placeholder="Comentario, producto, cantidad o país de origen"></textarea>
+              <input type="hidden" name="_subject" value="Solicitud de cotización - Peru Send">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input class="input" id="nombre" name="Nombre / Empresa" required placeholder="Nombre / Empresa *">
+              <input class="input" id="ruc" name="RUC" placeholder="RUC">
+              <input class="input" id="telefono" name="Celular" placeholder="Celular">
+              <input class="input" id="email" name="Email" type="email" required placeholder="Email *">
+              <input class="input full" id="sku" name="SKU o producto de interés" placeholder="SKU o producto de interés">
+              <textarea class="textarea full" id="comentario" name="Comentario, producto, cantidad o país de origen" rows="5" placeholder="Comentario, producto, cantidad o país de origen"></textarea>
               <button class="btn btn-blue full" type="submit" id="contactSubmit">Enviar por correo</button>
             </div>
           </form>
@@ -1969,18 +1972,10 @@
       link.addEventListener('click', () => navegarA(link.dataset.page));
     });
 
-    document.getElementById('contactForm').addEventListener('submit', event => {
-      event.preventDefault();
-      const nombre = document.getElementById('nombre').value;
-      const ruc = document.getElementById('ruc').value;
-      const telefono = document.getElementById('telefono').value;
-      const email = document.getElementById('email').value;
-      const sku = document.getElementById('sku').value;
-      const comentario = document.getElementById('comentario').value;
-      const subject = encodeURIComponent('Solicitud de cotización - Peru Send');
-      const body = encodeURIComponent(`Hola Peru Send,\n\nDeseo solicitar una cotización o información comercial con los siguientes datos:\n\nNombre / Empresa: ${nombre}\nRUC: ${ruc}\nCelular: ${telefono}\nEmail: ${email}\nSKU o producto de interés: ${sku}\nComentario, producto, cantidad o país de origen: ${comentario}\n\nQuedo atento(a) a su respuesta.\n\nSaludos.`);
-      document.getElementById('contactSubmit').textContent = 'Nos contactaremos con usted en breve';
-      window.location.href = `mailto:perusend2020@gmail.com?subject=${subject}&body=${body}`;
+    document.getElementById('contactForm').addEventListener('submit', () => {
+      const submitButton = document.getElementById('contactSubmit');
+      submitButton.textContent = 'Nos contactaremos con usted en breve';
+      submitButton.disabled = true;
     });
 
     renderCatalog();
