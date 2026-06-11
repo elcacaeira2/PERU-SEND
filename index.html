@@ -61,6 +61,15 @@
       display: block;
     }
 
+    .logo-link {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+    }
+
     .social {
       display: flex;
       align-items: center;
@@ -1006,7 +1015,9 @@
 <body>
   <div class="topbar">
     <div class="container topbar-inner">
-      <img class="topbar-logo" src="imagenes/logo-peru-send.png" alt="Logo Peru Send">
+      <button class="logo-link" type="button" onclick="navegarA('inicio')" aria-label="Ir al inicio">
+        <img class="topbar-logo" src="imagenes/logo-peru-send.png" alt="Logo Peru Send">
+      </button>
       <div class="social">
         <a class="social-icon" href="https://www.facebook.com/juan.elvira.94695/about_details" target="_blank" rel="noopener" aria-label="Facebook">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5V6.75c0-.62.42-.75.72-.75H16.5V3h-2.45C11.33 3 10.7 5.05 10.7 6.36V8.5H9v3h1.7V21H14v-9.5h2.23l.35-3H14z"/></svg>
@@ -1805,7 +1816,7 @@
             <h3 style="font-size:1.5rem; margin-bottom:16px;">Información de contacto</h3>
             <p><b>Dirección:</b> Calle Puquina 100, Torre 5 Dpto. 605, Res. Los Prados de San Miguel, Lima - Perú</p>
             <p><b>Teléfono:</b> (511) 228-2628</p>
-            <p><b>Email:</b> perusend2020@hotmail.com</p>
+            <p><b>Email:</b> perusend2020@gmail.com</p>
             <p><b>Web:</b> www.perusend.com</p>
             <p><b>Horario:</b> Lunes a Viernes, 9:00 a.m. - 6:00 p.m.</p>
             <div class="contact-whatsapp">
@@ -1821,7 +1832,7 @@
               <input class="input" id="email" type="email" required placeholder="Email *">
               <input class="input full" id="sku" placeholder="SKU o producto de interés">
               <textarea class="textarea full" id="comentario" rows="5" placeholder="Comentario, producto, cantidad o país de origen"></textarea>
-              <button class="btn btn-blue full" type="submit">Enviar por correo</button>
+              <button class="btn btn-blue full" type="submit" id="contactSubmit">Enviar por correo</button>
             </div>
           </form>
         </div>
@@ -1967,8 +1978,9 @@
       const sku = document.getElementById('sku').value;
       const comentario = document.getElementById('comentario').value;
       const subject = encodeURIComponent('Solicitud de cotización - Peru Send');
-      const body = encodeURIComponent(`Nombre / Empresa: ${nombre}\nRUC: ${ruc}\nCelular: ${telefono}\nEmail: ${email}\nProducto: ${sku}\n\nComentario:\n${comentario}`);
-      window.location.href = `mailto:perusend2020@hotmail.com?subject=${subject}&body=${body}`;
+      const body = encodeURIComponent(`Hola Peru Send,\n\nDeseo solicitar una cotización o información comercial con los siguientes datos:\n\nNombre / Empresa: ${nombre}\nRUC: ${ruc}\nCelular: ${telefono}\nEmail: ${email}\nSKU o producto de interés: ${sku}\nComentario, producto, cantidad o país de origen: ${comentario}\n\nQuedo atento(a) a su respuesta.\n\nSaludos.`);
+      document.getElementById('contactSubmit').textContent = 'Nos contactaremos con usted en breve';
+      window.location.href = `mailto:perusend2020@gmail.com?subject=${subject}&body=${body}`;
     });
 
     renderCatalog();
