@@ -736,6 +736,69 @@
       border-left: 6px solid var(--rojo);
     }
 
+    #page-repuestos .machine-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    #page-repuestos .parts-card {
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+    }
+
+    #page-repuestos .parts-card:hover,
+    #page-repuestos .parts-card:focus-within {
+      transform: translateY(-3px);
+      border-color: #2874ad;
+      box-shadow: 0 18px 34px rgba(11, 27, 64, 0.14);
+    }
+
+    #page-repuestos .parts-card > img,
+    #page-repuestos .parts-card .machine-media-pair {
+      width: 100%;
+      height: 208px;
+      object-fit: contain;
+      background: #f4f7fa;
+    }
+
+    #page-repuestos .parts-card > img { padding: 10px; }
+    #page-repuestos .parts-card .machine-media-pair img { height: 208px; object-fit: contain; }
+    #page-repuestos .parts-card .machine-body { padding: 16px; }
+    #page-repuestos .parts-card .machine-body h4 { min-height: 3.2em; font-size: 1.05rem; }
+    #page-repuestos .parts-card .machine-body > p,
+    #page-repuestos .parts-card .machine-specs { display: none; }
+    #page-repuestos .parts-card .machine-price { font-size: 0.9rem; }
+    #page-repuestos .parts-card .btn { width: 100%; background: #075aa5; color: white; }
+
+    #page-repuestos .part-detail[hidden],
+    #page-repuestos .machine-section[hidden] { display: none; }
+    #page-repuestos .part-detail { padding-top: 16px; }
+    #page-repuestos .part-back { border: 0; background: transparent; color: var(--azul); font-weight: 800; cursor: pointer; padding: 0 0 20px; }
+    #page-repuestos .part-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; background: #f7f9fc; border: 1px solid var(--linea); border-radius: 8px; padding: 26px; }
+    #page-repuestos .part-main-image { width: 100%; aspect-ratio: 1 / 1; max-height: 500px; object-fit: contain; background: white; border: 1px solid var(--linea); border-radius: 6px; }
+    #page-repuestos .part-thumbs { display: flex; gap: 10px; margin-top: 12px; }
+    #page-repuestos .part-thumbs button { width: 76px; height: 76px; padding: 3px; border: 1px solid var(--linea); border-radius: 6px; background: white; cursor: pointer; }
+    #page-repuestos .part-thumbs button.active { border: 2px solid var(--azul); }
+    #page-repuestos .part-thumbs img { width: 100%; height: 100%; object-fit: contain; }
+    #page-repuestos .part-code { color: var(--azul); font-size: 0.83rem; font-weight: 800; text-transform: uppercase; }
+    #page-repuestos .part-info h3 { margin: 6px 0 14px; color: var(--azul-oscuro); font-size: clamp(1.5rem, 2.4vw, 2.3rem); line-height: 1.15; }
+    #page-repuestos .part-price { font-size: 1.45rem; font-weight: 900; color: #17243a; }
+    #page-repuestos .part-availability { display: inline-block; margin: 8px 0 18px; color: #146b3a; font-weight: 750; }
+    #page-repuestos .part-description { color: #526276; line-height: 1.6; margin-bottom: 20px; }
+    #page-repuestos .part-info h4 { margin: 24px 0 8px; color: var(--azul-oscuro); }
+    #page-repuestos .part-specs { padding-left: 20px; color: #526276; line-height: 1.55; }
+    #page-repuestos .part-specs li { margin-bottom: 6px; }
+    #page-repuestos .part-quote { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin: 8px 0 20px; padding: 12px 20px; border-radius: 6px; background: #20c861; color: white; font-weight: 850; }
+    #page-repuestos .part-quote:hover { background: #16aa4e; color: white; }
+    #page-repuestos .part-share { border-top: 1px solid var(--linea); padding-top: 16px; }
+    #page-repuestos .part-share a { display: inline-block; margin: 8px 8px 0 0; padding: 7px 12px; border-radius: 5px; background: #e7eef8; color: var(--azul-oscuro); font-weight: 800; }
+    #page-repuestos .part-share a:first-of-type { background: #20c861; color: white; }
+    #page-repuestos .part-note { margin-top: 20px; color: #64758a; font-size: 0.85rem; }
+
+    @media (max-width: 1100px) { #page-repuestos .machine-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 760px) { #page-repuestos .machine-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } #page-repuestos .part-layout { grid-template-columns: 1fr; padding: 16px; } }
+    @media (max-width: 520px) { #page-repuestos .machine-grid { grid-template-columns: 1fr; } }
+
     .machine-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2034,7 +2097,133 @@
       }
     });
 
+    function initSpareParts() {
+      const page = document.getElementById('page-repuestos');
+      const listing = page.querySelector('.machine-section');
+      const cards = [...listing.querySelectorAll('.parts-card')];
+      const detail = document.createElement('section');
+      detail.className = 'part-detail';
+      detail.hidden = true;
+      detail.setAttribute('aria-label', 'Detalle del repuesto');
+      page.querySelector('.container').append(detail);
+
+      function backToParts() {
+        detail.hidden = true;
+        listing.hidden = false;
+        listing.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      function openPart(card, index) {
+        const title = card.querySelector('h4').textContent.trim();
+        const price = card.querySelector('.machine-price').textContent.trim();
+        const description = card.querySelector('.machine-body > p')?.textContent.trim()
+          || 'Solicita disponibilidad y compatibilidad con la marca, modelo y serie de tu equipo.';
+        const images = [...card.querySelectorAll('img')].map(img => ({ src: img.getAttribute('src'), alt: img.alt }));
+        const specs = card.querySelector('.machine-specs')?.cloneNode(true) || document.createElement('ul');
+        const quote = `https://wa.me/51993346812?text=${encodeURIComponent('Hola Peru Send, deseo cotizar el repuesto: ' + title + '. Mi equipo es marca/modelo/serie: ')}`;
+        const publicUrl = /^https?:$/.test(location.protocol) ? ' - ' + location.href : '';
+        const share = `https://wa.me/?text=${encodeURIComponent(title + ' - Peru Send' + publicUrl)}`;
+        const facebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}`;
+
+        detail.replaceChildren();
+        const back = document.createElement('button');
+        back.className = 'part-back';
+        back.type = 'button';
+        back.textContent = '← Volver a repuestos';
+        back.addEventListener('click', backToParts);
+        detail.append(back);
+
+        const layout = document.createElement('div');
+        layout.className = 'part-layout';
+        const gallery = document.createElement('div');
+        const mainImage = document.createElement('img');
+        mainImage.className = 'part-main-image';
+        mainImage.src = images[images.length - 1].src;
+        mainImage.alt = images[images.length - 1].alt;
+        gallery.append(mainImage);
+        const thumbs = document.createElement('div');
+        thumbs.className = 'part-thumbs';
+        images.forEach((image, imageIndex) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.setAttribute('aria-label', 'Ver imagen ' + (imageIndex + 1));
+          button.classList.toggle('active', imageIndex === images.length - 1);
+          const thumb = document.createElement('img');
+          thumb.src = image.src;
+          thumb.alt = image.alt;
+          button.append(thumb);
+          button.addEventListener('click', () => {
+            mainImage.src = image.src;
+            mainImage.alt = image.alt;
+            thumbs.querySelectorAll('button').forEach(item => item.classList.remove('active'));
+            button.classList.add('active');
+          });
+          thumbs.append(button);
+        });
+        gallery.append(thumbs);
+
+        const info = document.createElement('div');
+        info.className = 'part-info';
+        info.innerHTML = '<div class="part-code"></div><h3></h3><div class="part-price"></div><div class="part-availability">● Disponibilidad por confirmar</div><p class="part-description"></p><div class="part-actions"></div><div class="part-share"><strong>COMPARTIR:</strong><br></div><h4>Especificaciones</h4><p class="part-note">El precio y la disponibilidad pueden variar según stock y costos de envío.</p>';
+        info.querySelector('.part-code').textContent = 'Repuestos para maquinaria pesada';
+        info.querySelector('h3').textContent = title;
+        info.querySelector('.part-price').textContent = price === 'Requiere cotización' ? 'Precio a cotizar' : price;
+        info.querySelector('.part-description').textContent = description;
+        specs.className = 'part-specs';
+        info.querySelector('h4').after(specs);
+        const quoteLink = document.createElement('a');
+        quoteLink.className = 'part-quote';
+        quoteLink.href = quote;
+        quoteLink.target = '_blank';
+        quoteLink.rel = 'noopener';
+        quoteLink.innerHTML = '<svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.85c0 1.74.46 3.43 1.34 4.92L2 22l5.38-1.4a9.95 9.95 0 0 0 4.66 1.16h.01A9.9 9.9 0 0 0 22 11.91 9.92 9.92 0 0 0 12.04 2zm.01 18.08h-.01a8.25 8.25 0 0 1-4.2-1.15l-.3-.18-3.19.83.86-3.1-.2-.32a8.13 8.13 0 0 1-1.25-4.31 8.26 8.26 0 1 1 8.29 8.23zm4.53-6.17c-.25-.13-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.79.96-.14.17-.29.19-.54.07-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.38-1.73-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.61c.13.17 1.78 2.72 4.31 3.81.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg><span>COTIZAR POR WHATSAPP</span>';
+        info.querySelector('.part-actions').append(quoteLink);
+        const shareLinks = [['WhatsApp', share]];
+        if (publicUrl) shareLinks.push(['Facebook', facebook]);
+        shareLinks.forEach(([label, href]) => {
+          const link = document.createElement('a');
+          link.href = href;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.textContent = label;
+          info.querySelector('.part-share').append(link);
+        });
+        layout.append(gallery, info);
+        detail.append(layout);
+        listing.hidden = true;
+        detail.hidden = false;
+        detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      cards.forEach((card, index) => {
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', 'Ver detalle de ' + card.querySelector('h4').textContent.trim());
+        card.addEventListener('click', () => openPart(card, index));
+        card.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openPart(card, index);
+          }
+        });
+        const button = card.querySelector('.machine-body .btn');
+        if (button) {
+          button.removeAttribute('onclick');
+          button.removeAttribute('href');
+          button.removeAttribute('target');
+          button.textContent = 'Ver detalle';
+          button.addEventListener('click', event => {
+            event.preventDefault();
+            event.stopPropagation();
+            openPart(card, index);
+          });
+        }
+      });
+    }
+
     renderCatalog();
+    initSpareParts();
   </script>
 </body>
 </html>
+
